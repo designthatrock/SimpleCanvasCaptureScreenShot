@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>POC Test</title>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="200" height="100" style="border:1px solid #d3d3d3;">
+			Your browser does not support the HTML5 canvas tag.
+		</canvas>
+		<br/>
+		<button onclick="saveImage()" >Save as PNG</button>
+		<script>
+			var c = document.getElementById("myCanvas");
+			var ctx = c.getContext("2d");
+			ctx.moveTo(0,0);
+			ctx.lineTo(200,100);
+			ctx.stroke();
+			function saveImage()
+			{
+				var canvas = document.getElementById("myCanvas"); //Create Canvas
+				var img = canvas.toDataURL("image/png"); //Gets URL
+				var link = document.createElement('a'); //Creates an "a" element for link
+				link.href = img; //Download link of the image
+				link.download = "File Name.jpg"; //File name for the image
+				document.body.appendChild(link); //attaches the link
+				link.click(); //On click event for href
+				//document.write('<img src="'+img+'"/>');
+			}
+		</script>
+
+	</body>
+</html>
